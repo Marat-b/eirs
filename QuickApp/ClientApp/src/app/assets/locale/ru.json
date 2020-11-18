@@ -1,0 +1,216 @@
+{
+  "app": {
+    "Welcome": "Добро пожаловать",
+    "Notifications": "Уведомления",
+    "New": "Новый"
+  },
+  "form": {
+    "ErrorCaption": "Отсутствует информация",
+    "ErrorMessage": "Вы ввели неполную или неверную информацию. Скорректируйте ошибки и попробуйте опять."
+  },
+  "mainMenu": {
+    "Home": "Домашняя",
+    "Appointments": "Appointments",
+    "Customers": "Клиенты",
+    "Products": "Продукты",
+    "Orders": "Счета",
+    "About": "Подробнее",
+    "Logout": "Выйти",
+    "Login": "Войти",
+    "Account": "Пользователь",
+    "UserAccount": "Учётная запись пользователя",
+    "Profile": "Профиль",
+    "Settings": "Установки",
+    "Theme": "Выбрать тему",
+    "Devices": "Устройства"
+  },
+  "pageHeader": {
+    "Dashboard": "Дашбоард",
+    "Customers": "Клиенты",
+    "Products": "Продукты",
+    "Orders": "Ордера",
+    "NotFound": "Не найден",
+    "About": "Подробнее",
+    "Settings": "Установки",
+    "Users": "Управление пользователями",
+    "Roles": "Управление ролями",
+    "Devices": "Устройства",
+    "Links": "Линки"
+  },
+  "home": {
+    "NoWidgets1": "У вас нет отображаемых виджетов.",
+    "NoWidgets2": "сконфигурируйте доступные виджеты",
+    "StatisticsTitle": "Важные вещи."
+  },
+  "notFound": {
+    "404": "404",
+    "pageNotFound": "Страницв которую Вы ищете, не существует.",
+    "backToHome": "Назад домой"
+  },
+  "settings": {
+    "tab": {
+      "Profile": "Профиль",
+      "Preferences": "Предпочтения",
+      "Users": "Пользователи",
+      "Roles": "Роли",
+      "TimeIntervals": "Интервалы времени"
+    },
+    "description": {
+      "UserProfile": "Редактирование Вашего профиля",
+      "UserPreferences": "Редактирование Ващих предпочтений",
+      "UserDepartments": "Подразделение пользователя",
+      "UsersManagement": "Управление пользователями",
+      "RolesManagement": "Управление ролями пользователей",
+      "TimeIntervals": "Управление временными интервалами"
+    }
+  },
+  "preferences": {
+    "SavePreferences": "Сохранить предпочтения?",
+    "SavePreferencesHint": "Сохранить предпочтения в облако (синхронизировано между устройствами)",
+    "ReloadPreferences": "Перезагрузить предпочтения?",
+    "ReloadPreferencesHint": "Загрузить сохранённые предпочтения (локальные изменения будут потеряны)",
+    "ResetPreferences": "Сбросить предпочтения по умолчанию?",
+    "ResetPreferencesHint": "Сбросить предпочтения на программные по умолчанию (только локальные)",
+    "Language": "Язык",
+    "English": "Английский",
+    "French": "Французский",
+    "German": "Немецкий",
+    "Portuguese": "Португальский",
+    "Arabic": "Арабский",
+    "Korean": "Корейский",
+    "Russian": "Русский",
+    "LanguageHint": "Выберите предпочитаемый язык для вашей учётной записи",
+    "HomePage": "Домашняя страница",
+    "Dashboard": "Дашбоард",
+    "Customers": "Клиенты",
+    "Products": "Продукты",
+    "Orders": "Ордера",
+    "Devices": "Устройства",
+    "About": "Подробнее",
+    "Settings": "Установки",
+    "HomePageHint": "Выберите страницу по умолчанию для перехода после входа в систему",
+    "DashboardStatistics": "Статистика дашбоарда",
+    "DashboardStatisticsHint": "Show demo graph widget on the dashboard",
+    "DashboardNotifications": "Dashboard Notifications",
+    "DashboardNotificationsHint": "Show application notifications on the dashboard",
+    "DashboardTodo": "Dashboard Todo",
+    "DashboardTodoHint": "Shows demo todo widget on the dashboard",
+    "DashboardBanner": "Dashboard Banner",
+    "DashboardBannerHint": "Show demo information banner widget on the dashboard"
+  },
+  "users": {
+    "management": {
+      "Search": "Поиск пользователя",
+      "NewUser": "Новый пользователь",
+      "Edit": "Редактирование пользователя",
+      "Delete": "Удаление пользователя",
+      "EditUser": "Редактирование пользователя \"{{name}}\"",
+      "Title": "Заголовок",
+      "UserName": "Имя пользователя",
+      "FullName": "Полное имя",
+      "Email": "Эл. почта",
+      "Roles": "Роли",
+      "PhoneNumber": "Номер телефона"
+    },
+    "editor": {
+      "JobTitle": "Наименование работы",
+      "UserName": "Имя пользователя",
+      "UserNameRequired": "Требуетмя имя пользователя (мин. 2 символа и макс. 200 символов)",
+      "Password": "Пароль",
+      "PasswordHint": "Требуется Ваш пароль после смены имени пользователя",
+      "CurrentPasswordRequired": "Требуется текущий пароль",
+      "Email": "Эл. почта",
+      "EmailRequired": "Требуется адрес эл. почты (макс. 200 символов)",
+      "InvalidEmail": "Заданная эл. почта не верна",
+      "ChangePassword": "Смена пароля",
+      "CurrentPassword": "Текущий пароль",
+      "NewPassword": "Новый пароль",
+      "NewPasswordRequired": "Требуется новый пароль",
+      "NewPasswordRules": "Новый пароль должен содержать не менее одной заглавной буквы, строчной буквы, одной цифры и любого специального символа",
+      "ConfirmPassword": "Подтверждение пароля",
+      "ConfirmationPasswordRequired": "Требуется подтверждение пароля",
+      "PasswordMismatch": "Новый пароль и подтверждение пароля не совпадают",
+      "Roles": "Роли",
+      "FullName": " Полное имя",
+      "RoleRequired": " Требуется роль",
+      "PhoneNumber": "Номер телефона",
+      "Enabled": "Работоспособно",
+      "Unblock": "Разблокировать",
+      "Close": "Закрыть",
+      "Edit": "Редактировать",
+      "Cancel": "Отмена",
+      "Save": "Записать",
+      "Saving": "Запись..."
+    }
+  },
+  "roles": {
+    "management": {
+      "Search": "Поиск роли...",
+      "NewRole": "Новая роль",
+      "Edit": "Редактирование",
+      "Details": "Детали",
+      "Delete": "Удаление",
+      "RoleDetails": "Детали роли \"{{name}}\"",
+      "EditRole": "Редактировать роли \"{{name}}\"",
+      "Name": "Имя",
+      "Description": "Описание",
+      "Users": "Пользователи"
+    },
+    "editor": {
+      "Name": "Наименование:",
+      "Description": "Описание:",
+      "RoleNameRequired": "Требуется наименование роли (мин. 2 и макс. 200 символов)",
+      "SelectAll": "Выбрать всё",
+      "SelectNone": "Отменить выбор",
+      "Close": "Закрыть",
+      "Cancel": "Отменить",
+      "Save": "Записать",
+      "Saving": "Запись..."
+    }
+  },
+  "notifications": {
+    "Delete": "Удалить уведомления",
+    "Pin": "Прикрепить уведомления",
+    "Date": "Дата",
+    "Notification": "Уведомления"
+  },
+  "todoDemo": {
+    "management": {
+      "Search": "Поиск задачи...",
+      "HideCompleted": "Скрыть выполненные",
+      "ShowCompleted": "Показать выполненные",
+      "AddTask": "Добавить задачу",
+      "Delete": "Удалит задачу",
+      "Important": "Ометить как важное",
+      "Task": "Задача",
+      "Description": "Описание"
+    },
+    "editor": {
+      "NewTask": "Новая задача",
+      "Name": "Наименование",
+      "TaskNameRequired": "Требуется наименование задачи",
+      "Description": "Описание",
+      "Important": "Отметиь как важное",
+      "AddTask": "Добавить задачу"
+    }
+  },
+  "commands": {
+    "Edit": "Редактировать",
+    "Save": "Записать",
+    "Cancel": "Отменить",
+    "Reset": "Сбросить",
+    "Reload": "Перезагрузить"
+  },
+  "devices": {
+    "Devices": "Устройства",
+    "NewDevice": "Новое устройство",
+    "EditDevice": "Редактировать устройство",
+    "Active": "Активен"
+  },
+  "links": {
+    "Links": "Линки",
+    "EditLinkPool": "Редактирование пула линков",
+    "NewLinkPool": "Новый пул линков",
+    "PoolDevices": "Группа устройств"
+  }
+}

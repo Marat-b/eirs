@@ -1,0 +1,13 @@
+<h1 mat-dialog-title ><mat-icon>link</mat-icon> {{'links.PoolDevices' | translate }}</h1>
+
+<div mat-dialog-content>
+  <form #form="ngForm" [formGroup]="linkPoolForm" novalidate (ngSubmit)="save()" fxLayout="column"  autocomplete="off">
+    <div  fxLayout="column" fxLayoutGap="1em">
+        <mat-checkbox *ngFor="let item of devices" [checked]="selectedDevices.isSelected(item)"  (change)="$event ? selectedDevices.toggle(item) : null"  [title]="item.cityAddress" >{{item.name}}</mat-checkbox>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="save();" color="primary">Сохранить</button>
+  <button mat-raised-button (click)="cancel()" color="warn">Отменить</button>
+</div>

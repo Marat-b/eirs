@@ -1,0 +1,19 @@
+<app-page-header title="Dashboard" icon="dashboard"></app-page-header>
+<div class="page-content">
+
+    <div [@fadeInOut]>
+      <div  class="bottom-space">
+        <h4>{{'home.StatisticsTitle' | translate}}</h4>
+        <button mat-icon-button class="close" aria-label="Close" title="Close" style="float: right;" (click)="configurations.showDashboardStatistics = false">
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="clearfix"></div>
+        <statistics-demo></statistics-demo>
+      </div>
+
+
+
+
+
+    </div>
+</div>

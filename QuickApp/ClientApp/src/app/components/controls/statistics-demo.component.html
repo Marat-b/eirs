@@ -1,0 +1,65 @@
+<mat-card class="mat-elevation-z8" fxLayout.gt-md="row wrap" fxLayout.lt-lg="column">
+  <div fxFlex="60" fxLayout.gt-xs="row" fxLayout.lt-md="column">
+    <div class="chart-container" >
+      <canvas baseChart width="400" height="200"
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [colors]="chartColors"
+              [legend]="chartLegend"
+              [chartType]="'pie'"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+
+
+    </div>
+    <div class="chart-container" >
+      <canvas baseChart width="400" height="200"
+              [datasets]="chartData2"
+              [labels]="chartLabels2"
+              [options]="chartOptions"
+              [colors]="chartColors2"
+              [legend]="chartLegend"
+              [chartType]="'pie'"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div fxFlex="40">
+    <table fxHide.xs class="demo-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th *ngFor="let label of chartLabels">{{label}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of chartData">
+          <th>{{d && d.label.split(' ').pop()}}</th>
+          <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table fxHide.xs class="demo-table">
+      <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let label of chartLabels2">{{label}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let d of chartData2">
+        <th>{{d && d.label.split(' ').pop()}}</th>
+        <td *ngFor="let label of chartLabels2; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+  </div>
+</mat-card>

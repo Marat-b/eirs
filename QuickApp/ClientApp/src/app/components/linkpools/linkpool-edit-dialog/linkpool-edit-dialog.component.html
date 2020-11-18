@@ -1,0 +1,28 @@
+<h1 mat-dialog-title *ngIf="isNewLinkPool"><mat-icon>link</mat-icon> {{'links.NewLinkPool' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="!isNewLinkPool"><mat-icon>link</mat-icon> {{'links.EditLinkPool' | translate }}</h1>
+<div mat-dialog-content>
+  <form #form="ngForm" [formGroup]="linkPoolForm" novalidate (ngSubmit)="save()" fxLayout="column"  autocomplete="off">
+    <div  fxLayout="column" fxLayoutGap="1em">
+      <mat-form-field  fxFlex>
+        <mat-label>Имя группы</mat-label>
+        <input matInput formControlName="poolName" required />
+        <mat-error *ngIf="poolName.hasError('required')">
+          Требуется ввести имя группы для скачивания ролика
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  fxFlex>
+        <mat-label>Линк</mat-label>
+        <input matInput formControlName="linkPath" required />
+        <mat-error *ngIf="linkPath.hasError('required')">
+          Требуется ввести URL (адрес) скачивания ролика
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="save();" color="primary">Сохранить</button>
+  <button mat-raised-button (click)="cancel()" color="warn">Отменить</button>
+</div>
+

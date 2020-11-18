@@ -1,0 +1,87 @@
+
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Устройство - <span class="device-view-word-title">{{device.name}}</span></mat-card-title>
+        <mat-card-subtitle>{{device.cityAddress}}</mat-card-subtitle>
+        <mat-card-subtitle>ID ({{device.id}})</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="device-view-margin">
+
+        <div fxLayout.gt-sm="row"  class="device-view-margin" fxLayout.lt-md="column">
+        <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxLayoutAlign.gt-sm="start center"  fxFlex="33%">
+            <mat-label>Наименование устройства:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word">{{device.name}}</mat-label>
+        </div>
+        <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%" >
+          <mat-label>Местонахождение устройства:</mat-label>
+          <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word mat-word-break-all">{{device.cityAddress}}</mat-label>
+        </div>
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%">
+            <mat-label>IP адрес:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word">{{device.ipAddress}}</mat-label>
+          </div>
+        </div>
+
+        <div fxLayout.gt-sm="row" class="device-view-margin" fxLayout.lt-md="column">
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxLayoutAlign.gt-sm="start center" fxFlex="33%">
+            <mat-label>Активность наблюдения:</mat-label>
+            <!--mat-chip  fxLayoutAlign.lt-sm="start" [color]="device.isActive ? 'primary' : 'accent'"  selected  class="round" fxFlexOffset.gt-xs="5%"><mat-icon *ngIf="device.isActive" >done</mat-icon><mat-icon *ngIf="!device.isActive" >clear</mat-icon></mat-chip-->
+            <button  mat-icon-button [color]="device.isActive ? 'primary' : 'accent'"  >
+              <mat-icon *ngIf="device.isActive">check_circle_outline</mat-icon><mat-icon *ngIf="!device.isActive">highlight_off</mat-icon></button>
+          </div>
+
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxLayoutAlign.gt-sm="start center" fxFlex="33%" >
+            <mat-label>Тип воспроизведения видео:</mat-label>
+            <!--mat-chip  [color]="device.isOnline ? 'primary' : 'accent'"  selected  class="round" fxFlexOffset.gt-xs="5%"><mat-icon *ngIf="device.isOnline" >done</mat-icon><mat-icon *ngIf="!device.isOnline" >clear</mat-icon></mat-chip-->
+            <button  mat-icon-button [color]="isOvertime(overTime, device) ? 'accent' : 'primary'"  [matTooltip]="device.isOnline ? 'Воспроизводится потоковое видео' : 'Воспроизводится локальный файл'">
+              <mat-icon *ngIf="device.isOnline">cast_connected</mat-icon><mat-icon *ngIf="!device.isOnline">ondemand_video</mat-icon></button>
+          </div>
+
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxLayoutAlign.gt-sm="start center" fxFlex="33%">
+            <mat-label>Наличие монитора:</mat-label>
+            <!--mat-chip  [disabled]="!device.isMonitor"  [color]="device.isMonitor ? 'primary' : ''"  [selected]="device.isMonitor"
+                       class="round" fxFlexOffset.gt-xs="5%" [matTooltip]="device.isMonitor ? 'Монитор присутствует' : 'Монитор отсутствует'"  ><mat-icon >tv</mat-icon></mat-chip-->
+            <button  mat-icon-button [color]="device.isMonitor ? 'primary' : 'accent'"    [matTooltip]="device.isMonitor ? 'Монитор присутствует' : 'Монитор отсутствует'"
+                     matRipple >
+              <mat-icon *ngIf="device.isMonitor">tv</mat-icon><mat-icon *ngIf="!device.isMonitor">tv_off</mat-icon></button>
+          </div>
+
+        </div>
+
+        <div fxLayout.gt-sm="row" class="device-view-margin" fxLayout.lt-md="column">
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%">
+            <mat-label>Название ролика:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%"  class="device-view-word">{{device.movie}}</mat-label>
+          </div>
+
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%" >
+            <mat-label>Громкость звука:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word">{{device.volume}} %</mat-label>
+          </div>
+
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%" >
+            <mat-label>Температура процессора:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word">{{device.temperature}} &#8451;</mat-label>
+          </div>
+
+        </div>
+
+        <div fxLayout.gt-sm="row" class="device-view-margin" fxLayout.lt-md="column">
+          <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFlex="33%">
+            <mat-label>Последнее обновление:</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word"  *ngIf="!isOvertime(overTime, device)">{{device.lastUpdate | date:'fullDate'}} {{device.lastUpdate | date:'mediumTime'}}</mat-label>
+            <mat-label fxFlexOffset.gt-xs="5%" class="device-view-word"  *ngIf="isOvertime(overTime, device)" matBadge="!"
+                       matBadgeColor="warn" [matTooltip]="device.isActive ? getTooltip(device.lastUpdate) : ''">{{device.lastUpdate | date:'fullDate'}} {{device.lastUpdate | date:'mediumTime'}}</mat-label>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+
+      </mat-card-actions>
+    </mat-card>
+
+
+
+

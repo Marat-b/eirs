@@ -1,0 +1,58 @@
+<app-page-header title="Links" icon="link">{{'links.Links' | translate }}</app-page-header>
+<div [@fadeInOut] [class.page-content]="!mobileQuery.matches">
+
+  <div class="search-box" fxLayoutAlign=" center">
+    <mat-form-field fxFlex>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск">
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <mat-progress-bar *ngIf="loadingIndicator" mode="query"></mat-progress-bar>
+    <mat-table [dataSource]="dataSource" matSort >
+
+      <ng-container matColumnDef="poolName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="33%">Группа</mat-header-cell>
+        <mat-cell  *matCellDef="let row" fxFlex="33%"><div class="mat-word-break-all" fxFlex="100%"> {{row.poolName}}</div> </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="linkPath">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="33%">Линк</mat-header-cell>
+        <mat-cell  *matCellDef="let row" fxFlex="33%"><div class="mat-word-break-all"  fxFlex="100%"> {{row.linkPath}}</div> </mat-cell>
+      </ng-container>
+
+      <ng-container  matColumnDef="actions">
+
+        <mat-header-cell *matHeaderCellDef fxFlex="34%">
+          <button  mat-button color="primary" matTooltip="Новое устройство" (click)="editLinkpool()">
+            <mat-icon class="mat-button-icon">add</mat-icon>Создать
+          </button>
+        </mat-header-cell>
+
+
+        <mat-cell *matCellDef="let row" fxFlex="34%" >
+
+          <button mat-icon-button matTooltip="Устройства" (click)="editDevice(row)">
+            <mat-icon>devices</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Редактировать" (click)="editLinkpool(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Удалить" (click)="confirmDelete(row)">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </mat-cell>
+
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 75, 100]" [pageSize]="50" ></mat-paginator>
+  </div>
+
+
+</div>

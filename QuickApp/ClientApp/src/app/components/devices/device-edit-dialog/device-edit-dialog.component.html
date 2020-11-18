@@ -1,0 +1,46 @@
+<h1 mat-dialog-title *ngIf="isNewDevice"><mat-icon>tv</mat-icon> {{'devices.NewDevice' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="!isNewDevice"><mat-icon>tv</mat-icon> {{'devices.EditDevice' | translate }}</h1>
+<div mat-dialog-content>
+  <form #form="ngForm" [formGroup]="deviceForm" novalidate (ngSubmit)="save()" fxLayout="column"  autocomplete="off">
+    <div  fxLayout="column" fxLayoutGap="1em">
+      <mat-form-field  fxFlex>
+        <mat-label>Наименоваие</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="name.hasError('required')">
+            Требуется ввести имя устройства
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  fxFlex>
+        <mat-label>Адрес</mat-label>
+        <input matInput formControlName="cityAddress" required />
+        <mat-error *ngIf="cityAddress.hasError('required')">
+          Требуется ввести адрес местонахождения устройства
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  fxFlex>
+        <mat-label>IP адрес</mat-label>
+        <input matInput formControlName="ipAddress" required />
+        <mat-error *ngIf="ipAddress.hasError('required')">
+          Требуется ввести IP адрес устройства
+        </mat-error>
+        <mat-error *ngIf="!ipAddress.hasError('required') && ipAddress.hasError('pattern')">
+          Требуется ввести IP адрес в формате XXX.XXX.XXX.XXX
+        </mat-error>
+      </mat-form-field>
+
+      <div fxFlex.gt-sm="0 1 calc(50% - 0.5em)">
+        <mat-checkbox  formControlName="isActive">{{'devices.Active' | translate }}</mat-checkbox>
+      </div>
+
+    </div>
+
+    <div>&nbsp;</div>
+  </form>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="save();" color="primary">Сохранить</button>
+  <button mat-raised-button (click)="cancel()" color="warn">Отменить</button>
+</div>

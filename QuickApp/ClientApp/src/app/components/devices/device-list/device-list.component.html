@@ -1,0 +1,80 @@
+<app-page-header title="Devices" icon="devices">{{'devices.Devices' | translate }}</app-page-header>
+<div [@fadeInOut] [class.page-content]="!mobileQuery.matches">
+
+  <div class="search-box" fxLayoutAlign=" center">
+    <mat-form-field fxFlex>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Поиск">
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <mat-progress-bar *ngIf="loadingIndicator" mode="query"></mat-progress-bar>
+    <mat-table [dataSource]="dataSource" matSort >
+
+      <ng-container matColumnDef="volume">
+        <mat-header-cell   fxFlex="15%" *matHeaderCellDef mat-sort-header fxLayout="wrap" > <div class="mat-word-break-all">Громкость</div>  </mat-header-cell>
+        <mat-cell fxFlex="15%" *matCellDef="let row" fxLayoutAlign="left" >
+          <button mat-icon-button (click)="setVolume(row)" color="primary">
+          <mat-icon *ngIf="row.volume==0">volume_off</mat-icon>
+            <mat-icon *ngIf="row.volume>0 && row.volume<33">volume_mute</mat-icon>
+            <mat-icon *ngIf="row.volume>34 && row.volume<66">volume_down</mat-icon>
+            <mat-icon *ngIf="row.volume>67 && row.volume<101">volume_up</mat-icon>{{row.volume}}
+          </button> </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cityAddress">
+        <mat-header-cell   [fxFlex]="canManageUsers ? '30%' : '35%'" *matHeaderCellDef mat-sort-header> <div class="mat-word-break-all">Адрес</div> </mat-header-cell>
+        <mat-cell [fxFlex]="canManageUsers ? '30%' : '35%'" *matCellDef="let row" ><div class="mat-word-break-all"> {{row.cityAddress}}</div> </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="screenshot">
+        <mat-header-cell   fxFlex="10%" *matHeaderCellDef mat-sort-header><div class="mat-word-break-all"> Скриншот</div> </mat-header-cell>
+      <mat-cell fxFlex="10%" *matCellDef="let row" fxLayoutAlign="center"> <img [src]="'data:image/jpg;base64,'+row.screenshot" width="30px" height="30px" (click)="showScreenshot(row)" /> </mat-cell>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="isOnline">
+        <mat-header-cell  fxFlex="10%" *matHeaderCellDef mat-sort-header matTooltip="Тип воспроизведения видео файла"><div class="mat-word-break-all"> Воспроизведение</div> </mat-header-cell>
+        <mat-cell fxFlex="10%" *matCellDef="let row" fxLayoutAlign="center">
+        <button  mat-icon-button  [color]="getColor(overTime, row)"  (click)="setViewDevice(row)" [matTooltip]="row.isOnline ? 'Воспроизводится потоковое видео' : 'Воспроизводится локальный файл'">
+          <mat-icon *ngIf="row.isOnline">cast_connected</mat-icon><mat-icon *ngIf="!row.isOnline">ondemand_video</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastUpdate">
+        <mat-header-cell [fxFlex]="canManageUsers ? '20%' : '30%'" *matHeaderCellDef mat-sort-header><div class="mat-word-break-all"> Дата обновления</div> </mat-header-cell>
+        <mat-cell [fxFlex]="canManageUsers ? '20%' : '30%'" *matCellDef="let row">
+          <span *ngIf="!isOvertime(overTime, row)" class="mat-word-break-all">  {{row.lastUpdate | date:'fullDate'}} {{row.lastUpdate | date:'mediumTime'}} </span>
+          <span *ngIf="isOvertime(overTime, row)" matBadge="!" matBadgeColor="warn"  [matTooltip]="getTooltip(row.lastUpdate)" class="mat-word-break-all">   {{row.lastUpdate | date:'fullDate'}} {{row.lastUpdate | date:'mediumTime'}}   </span>
+
+        </mat-cell>
+      </ng-container>
+
+      <ng-container *ngIf="canManageUsers" matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef fxFlex="15%">
+          <button  mat-button color="primary" matTooltip="Новое устройство" (click)="editDevice()">
+            <mat-icon class="mat-button-icon">add_to_queue</mat-icon>Создать
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let device" fxFlex="15%" >
+          <button mat-icon-button matTooltip="Редактировать" (click)="editDevice(device)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Удалить" (click)="confirmDelete(device)">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 75, 100]" [pageSize]="50" ></mat-paginator>
+
+  </div>
+
+</div>

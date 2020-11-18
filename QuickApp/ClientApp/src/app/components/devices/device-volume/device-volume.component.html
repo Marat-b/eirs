@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Громкость устройства
+    </mat-card-title>
+    <mat-card-subtitle>{{name}}</mat-card-subtitle>
+    <mat-card-subtitle>{{address}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-dialog-content>
+    <h1 class="mat-h1">{{value}} %</h1>
+    <div fxFlexAlign="center" fxLayoutAlign="center">
+      <mat-slider min="0" max="100" step="1" thumbLabel="true" tickInterval="10" vertical="false" [(ngModel)]="value" fxFlex="70%" fxFlexAlign="center"></mat-slider>
+    </div>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button mat-raised-button (click)="save();" color="primary">Сохранить</button>
+    <button mat-raised-button (click)="cancel()" color="warn">Отменить</button>
+  </mat-card-actions>
+</mat-card>

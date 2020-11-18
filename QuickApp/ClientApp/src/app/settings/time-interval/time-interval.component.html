@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutGap="1em" fxFlex="50">
+  <mat-form-field>
+    <mat-label>Интервал обновления информации</mat-label>
+    <input matInput  [(ngModel)]="this.timeInterval.interval" #formInterval="ngModel"
+    matTooltip="Интервал обновления информации в минутах" required>
+    <mat-hint>Минуты</mat-hint>
+    <mat-error *ngIf="formInterval.hasError('required')" >
+      Требуется ввести число
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Истечения срока последенего предупреждения</mat-label>
+    <input matInput [(ngModel)]="timeInterval.overTime" #formOvertime="ngModel" placeholder="Истечения срока последенего предупреждения (мин)"
+           matTooltip="Промежуток времени в минутах, предупреждения о истечении времени последнего обновления" required>
+    <mat-hint>Минуты</mat-hint>
+    <mat-error *ngIf="formOvertime.hasError('required')" >
+      Требуется ввести число
+    </mat-error>
+  </mat-form-field>
+</div>
